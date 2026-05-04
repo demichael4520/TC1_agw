@@ -4,15 +4,19 @@ import subprocess
 import sys
 
 def main():
-    # 1. Resolve variables dynamically via user prompts with fallback defaults
-    default_project = os.getenv("GOOGLE_CLOUD_PROJECT") or "deepakmichael"
-    default_location = os.getenv("GOOGLE_CLOUD_LOCATION") or "us-central1"
-    default_gateway = os.getenv("AGENT_GATEWAY_ID") or "egress-agw"
-
+    # 1. Resolve variables dynamically via strict user prompts without fallback defaults
     try:
-        PROJECT_ID = input(f"Enter Google Cloud Project ID [{default_project}]: ").strip() or default_project
-        LOCATION = input(f"Enter Google Cloud Location/Region [{default_location}]: ").strip() or default_location
-        GATEWAY_ID = input(f"Enter Agent Gateway ID [{default_gateway}]: ").strip() or default_gateway
+        PROJECT_ID = input("Enter Google Cloud Project ID: ").strip()
+        while not PROJECT_ID:
+            PROJECT_ID = input("Project ID is required. Enter Google Cloud Project ID: ").strip()
+
+        LOCATION = input("Enter Google Cloud Location/Region (e.g., us-central1): ").strip()
+        while not LOCATION:
+            LOCATION = input("Location is required. Enter Google Cloud Location/Region: ").strip()
+
+        GATEWAY_ID = input("Enter Agent Gateway ID: ").strip()
+        while not GATEWAY_ID:
+            GATEWAY_ID = input("Gateway ID is required. Enter Agent Gateway ID: ").strip()
     except KeyboardInterrupt:
         print("\nDeployment cancelled by user.")
         sys.exit(0)

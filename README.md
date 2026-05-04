@@ -49,7 +49,7 @@ bq --project_id=$GOOGLE_CLOUD_PROJECT query \
 
 To provide complete flexibility to deploy your agent with **any custom Project ID, Location, or Agent Gateway**, run the programmatic deployment script `deploy.py`. 
 
-When executed, this script **interactively prompts you** to enter your custom values, falling back to your environment variables (or default fallbacks) if you press Enter:
+When executed, this script **interactively prompts you** to explicitly enter each value (non-empty inputs are strictly enforced and there are no silent fallback defaults):
 
 ```bash
 # Run the interactive deployment script
@@ -58,12 +58,13 @@ python3 deploy.py
 
 Example terminal interaction:
 ```text
-Enter Google Cloud Project ID [deepakmichael]: 
-Enter Google Cloud Location/Region [us-central1]: 
-Enter Agent Gateway ID [egress-agw]: 
+Enter Google Cloud Project ID: deepakmichael
+Enter Google Cloud Location/Region (e.g., us-central1): us-central1
+Enter Agent Gateway ID: egress-agw
 ```
 
 The script dynamically generates `.agent_engine_config.json` and deploys the agent seamlessly.
+
 
 
 ---
