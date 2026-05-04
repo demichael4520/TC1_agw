@@ -45,22 +45,18 @@ bq --project_id=$GOOGLE_CLOUD_PROJECT query \
 
 ---
 
-## 📋 Universal CLI Deployments
+## 📋 Customizable Programmatic Deployments
 
-Ensure that your terminal context is navigated directly into this repository's parent workspace folder before executing deployment commands to prevent accidental parent virtual environment bloat rejections:
+To provide complete flexibility to deploy your agent with **any custom Project ID, Location, or Agent Gateway**, use the programmatic deployment script `deploy.py`. This script automatically generates the `.agent_engine_config.json` file dynamically before triggering the ADK deployment.
 
 ```bash
-
-# 1. Set up universal environment variables
+# 1. Set up your custom environment variables
 export GOOGLE_CLOUD_PROJECT="YOUR_PROJECT_ID"
 export GOOGLE_CLOUD_LOCATION="YOUR_REGION"
+export AGENT_GATEWAY_ID="YOUR_AGENT_GATEWAY_NAME"
 
-# 2. Execute deployment
-adk deploy agent_engine \
-    --project=$GOOGLE_CLOUD_PROJECT \
-    --region=$GOOGLE_CLOUD_LOCATION \
-    --display_name="Travel Agent for DJs" \
-    .
+# 2. Run the dynamic deployment script
+python3 deploy.py
 ```
 
 ---
