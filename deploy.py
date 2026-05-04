@@ -4,10 +4,18 @@ import subprocess
 import sys
 
 def main():
-    # 1. Resolve variables from environment with sensible defaults
-    PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT") or "deepakmichael"
-    LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION") or "us-central1"
-    GATEWAY_ID = os.getenv("AGENT_GATEWAY_ID") or "egress-agw"
+    # 1. Resolve variables dynamically via user prompts with fallback defaults
+    default_project = os.getenv("GOOGLE_CLOUD_PROJECT") or "deepakmichael"
+    default_location = os.getenv("GOOGLE_CLOUD_LOCATION") or "us-central1"
+    default_gateway = os.getenv("AGENT_GATEWAY_ID") or "egress-agw"
+
+    try:
+        PROJECT_ID = input(f"Enter Google Cloud Project ID [{default_project}]: ").strip() or default_project
+        LOCATION = input(f"Enter Google Cloud Location/Region [{default_location}]: ").strip() or default_location
+        GATEWAY_ID = input(f"Enter Agent Gateway ID [{default_gateway}]: ").strip() or default_gateway
+    except KeyboardInterrupt:
+        print("\nDeployment cancelled by user.")
+        sys.exit(0)
 
     # 2. Construct config data dynamically
     config_data = {
