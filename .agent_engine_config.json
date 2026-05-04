@@ -1,0 +1,11 @@
+{
+  "identity_type": "AGENT_IDENTITY",
+  "agent_gateway_config": {
+    "agent_to_anywhere_config": {
+      "agent_gateway": "projects/deepakmichael/locations/us-central1/agentGateways/egress-agw"
+    }
+  },
+  "env_vars": {
+    "GOOGLE_API_PREVENT_AGENT_TOKEN_SHARING_FOR_GCP_SERVICES": "false"
+  }
+}
