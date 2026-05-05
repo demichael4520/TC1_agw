@@ -17,12 +17,11 @@ Standalone single-runtime AI Assistant deployed on Vertex AI Agent Engine utiliz
 Bootstrap the Python 3 virtual environment and install dependencies prior to deployment:
 
 ```bash
-# 1. Running the following command in your HOME DIRECTORY
+# 1. Running the following 
 python3 -m venv ../venv_standalone
 
-# 2. Activate environment in your HOME DIRECTORY
+# 2. Activate environment
 source ../venv_standalone/bin/activate
-
 
 # 3. Install package dependencies
 pip install -r requirements.txt
