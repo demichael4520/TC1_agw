@@ -12,7 +12,7 @@ Standalone single-runtime AI Assistant deployed on Vertex AI Agent Engine utiliz
 
 ## ⚙️ Environment Setup & Virtualenv
 
-Use the read me file from github.com to follow along, DO NOT invoke steps #1 & #2 from the dj_standalone_agent_identify DIRECTORY, doing so will result in a failure.  
+ DO NOT invoke steps #1 & #2 from the dj_standalone_agent_identify DIRECTORY, doing so will result in a failure.  
 
 Bootstrap the Python 3 virtual environment and install dependencies prior to deployment:
 
@@ -23,10 +23,8 @@ python3 -m venv ../venv_standalone
 # 2. Activate environment in your HOME DIRECTORY
 source ../venv_standalone/bin/activate
 
-# 3. Navigate to dj_standalone_agent_identify DIRECTORY
-cd dj_standalone_agent_identify
 
-# 4. Install package dependencies
+# 3. Install package dependencies
 pip install -r requirements.txt
 ```
 
@@ -45,7 +43,7 @@ bq --project_id=$GOOGLE_CLOUD_PROJECT query \
 
 ---
 
-## 📋 Customizable Interactive Deployments
+## 📋 Customizable Interactive Deployments for Agent Gateway Integration
 
 To provide complete flexibility to deploy your agent with **any custom Project ID, Location, or Agent Gateway**, run the programmatic deployment script `deploy.py`. 
 
