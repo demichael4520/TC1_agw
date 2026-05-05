@@ -80,9 +80,9 @@ The executing principal that triggers `adk deploy` (e.g. your local Google Cloud
 Once deployed, the agent executes with its own unique principal ID format:
 `principal://agents.global.org-ORGANIZATION_ID.system.id.goog/resources/aiplatform/projects/PROJECT_NUMBER/locations/LOCATION/reasoningEngines/AGENT_ENGINE_ID`
 
-Grant the following roles to the **Agent Identity** so it can access BQ and models securely:
-*   **BigQuery Job User** (`roles/bigquery.jobUser`): To execute SQL queries inside your project.
-*   **BigQuery Data Viewer** (`roles/bigquery.dataViewer`): Required on the target dataset (`travel_app_ds`) to query table data.
+Grant the following roles to the **Agent Identity** (SPIFFE principal) so it can access BQ and models securely:
+*   **BigQuery User** (`roles/bigquery.user`): To execute queries and jobs inside BigQuery.
+*   **BigQuery Data Viewer** (`roles/bigquery.dataViewer`): Required on the target dataset to query table data.
 *   **Vertex AI Express User** (`roles/aiplatform.expressUser`): To invoke Gemini models and call MCP tools.
 *   **MCP Tool User** (`roles/mcp.toolUser`): Required to authorize calling Google-Managed MCP servers.
 
@@ -98,7 +98,7 @@ export AGENT_MEMBER="principal://agents.global.org-$ORG_ID.system.id.goog/resour
 
 # Grant roles to the Agent Identity
 gcloud alpha projects add-iam-policy-binding $PROJECT_ID --member="$AGENT_MEMBER" --role="roles/aiplatform.expressUser"
-gcloud alpha projects add-iam-policy-binding $PROJECT_ID --member="$AGENT_MEMBER" --role="roles/bigquery.jobUser"
+gcloud alpha projects add-iam-policy-binding $PROJECT_ID --member="$AGENT_MEMBER" --role="roles/bigquery.user"
 gcloud alpha projects add-iam-policy-binding $PROJECT_ID --member="$AGENT_MEMBER" --role="roles/bigquery.dataViewer"
 gcloud alpha projects add-iam-policy-binding $PROJECT_ID --member="$AGENT_MEMBER" --role="roles/mcp.toolUser"
 ```
