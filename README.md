@@ -82,9 +82,10 @@ Once deployed, the agent executes with its own unique principal ID format:
 
 Grant the following roles to the **Agent Identity** (SPIFFE principal) so it can access BQ and models securely:
 *   **BigQuery User** (`roles/bigquery.user`): To execute queries and jobs inside BigQuery.
-*   **BigQuery Data Viewer** (`roles/bigquery.dataViewer`): Required on the target dataset to query table data.
-*   **Vertex AI Express User** (`roles/aiplatform.expressUser`): To invoke Gemini models and call MCP tools.
 *   **MCP Tool User** (`roles/mcp.toolUser`): Required to authorize calling Google-Managed MCP servers.
+
+Grant the following roles to the **Agent Identity** (SPIFFE principal) Big Query Dataset travel_app_ds:
+*   **BigQuery User** (`roles/bigquery.user`): To execute queries and jobs inside BigQuery.
 
 #### 1. Granting permissions to the Agent Identity using gcloud:
 ```bash
