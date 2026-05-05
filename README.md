@@ -98,9 +98,8 @@ export AGENT_ENGINE_ID="3944964707332390912"
 export AGENT_MEMBER="principal://agents.global.org-$ORG_ID.system.id.goog/resources/aiplatform/projects/$PROJECT_NUMBER/locations/us-central1/reasoningEngines/$AGENT_ENGINE_ID"
 
 # Grant roles to the Agent Identity
-gcloud alpha projects add-iam-policy-binding $PROJECT_ID --member="$AGENT_MEMBER" --role="roles/aiplatform.expressUser"
+
 gcloud alpha projects add-iam-policy-binding $PROJECT_ID --member="$AGENT_MEMBER" --role="roles/bigquery.user"
-gcloud alpha projects add-iam-policy-binding $PROJECT_ID --member="$AGENT_MEMBER" --role="roles/bigquery.dataViewer"
 gcloud alpha projects add-iam-policy-binding $PROJECT_ID --member="$AGENT_MEMBER" --role="roles/mcp.toolUser"
 ```
 
